@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" class="h-100">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title th:text="${title}"></title>
+  <link rel="stylesheet" th:href="@{/css/common.css}">
+  <link rel="stylesheet" th:href="@{/css/blog-add.css}">
+  <link rel="stylesheet" th:href="@{/css/blog-buttons.css}">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body class="bg-dark">
+
+  <header class="mb-lg-auto" th:insert="blocks/header :: header">
+  </header>
+
+  <main>
+    <div class="container mt-5 mb-5">
+      <h1 class="text-white text-center">Створення статті</h1>
+      <form action="/blog/add" method="post">
+        <input type="text" name="title" placeholder="Введіть заголовок статті" class="form-control"><br>
+        <input type="text" name="anons" placeholder="Введіть анонс статті" class="form-control"><br>
+        <textarea name="full_text" placeholder="Введіть повний текст статті" class="form-control"
+          rows="10"></textarea><br>
+        <button type="submit" class="btn btn-success text-center custom_btn">Додати статтю</button>
+      </form>
+    </div>
+  </main>
+  <footer class="mt-auto text-white-50 fixed-bottom" th:insert="blocks/footer :: footer">
+  </footer>
+</body>
+
+</html>

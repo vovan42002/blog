@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" class="h-100">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/blog-buttons.css}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body class="bg-dark">
+
+    <header class="mb-lg-auto" th:insert="blocks/header :: header">
+    </header>
+
+    <main>
+        <div class="container mt-5">
+            <div th:each="el : ${post}" class="alert alert-light mt-2">
+                <h3 th:text="${el.title}"></h3>
+                <p th:text="${el.full_text}"></p>
+                <p><b>Likes </b><i class="fa fa-heart" aria-hidden="true"></i>: <span th:text="${el.likes}"></span></p>
+                <div class="d-flex">
+                    <a th:href="'/blog/'+${el.id} + '/edit'" class="btn btn-secondary custom_btn">Edit</a>
+                    <form th:action="'/blog/'+${el.id} + '/remove'" method="post">
+                        <button class="btn btn-danger custom_btn">Remove</button>
+                    </form>
+                    <form th:action="'/blog/' +${el.id} + '/like'" method="post">
+                        <button class="btn">Like <i class="fa fa-heart" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-auto text-white-50 fixed-bottom" th:insert="blocks/footer :: footer">
+    </footer>
+</body>
+
+</html>
