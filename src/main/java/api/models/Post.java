@@ -1,12 +1,14 @@
 package api.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Post {
+@Table(name = "post")
+public class Post implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "title")

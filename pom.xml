@@ -15,6 +15,7 @@
 	<description>blog</description>
 	<properties>
 		<java.version>11</java.version>
+		<property name="hibernate.hbm2ddl.auto">update</property>
 	</properties>
 	<dependencies>
 
@@ -22,6 +23,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 			<version>2.5.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>
