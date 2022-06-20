@@ -14,9 +14,11 @@
 	<name>blog</name>
 	<description>blog</description>
 	<properties>
-		<java.version>11.0.10</java.version>
-		<maven.compiler.source>11.0.10</maven.compiler.source>
-		<maven.compiler.target>11.0.10</maven.compiler.target>
+		<java.version>11</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 	</properties>
 	<dependencies>
 
@@ -62,44 +64,21 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-
-				<configuration>
-					<fork>false</fork>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
-					<encoding>UTF-8</encoding>
-					<compilerArgs>
-						<arg>-parameters</arg>
-					</compilerArgs>
-					<release>${java.version}</release>
-					<forceJavacCompilerUse>true</forceJavacCompilerUse>
-				</configuration>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 				<executions>
-					<!-- Replacing default-compile as it is treated specially by maven -->
 					<execution>
-						<id>default-compile</id>
-						<phase>none</phase>
-					</execution>
-					<!-- Replacing default-testCompile as it is treated specially by maven -->
-					<execution>
-						<id>default-testCompile</id>
-						<phase>none</phase>
-					</execution>
-					<execution>
-						<id>java-compile</id>
-						<phase>compile</phase>
 						<goals>
-							<goal>compile</goal>
+							<goal>build-info</goal>
 						</goals>
-					</execution>
-					<execution>
-						<id>java-test-compile</id>
-						<phase>test-compile</phase>
-						<goals>
-							<goal>testCompile</goal>
-						</goals>
+						<configuration>
+							<additionalProperties>
+								<encoding.source>${project.build.sourceEncoding}</encoding.source>
+								<encoding.reporting>${project.reporting.outputEncoding}</encoding.reporting>
+								<java.source>${maven.compiler.source}</java.source>
+								<java.target>${maven.compiler.target}</java.target>
+							</additionalProperties>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
